@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+      body { 
+        background-image: url("https://images.all-free-download.com/images/graphiclarge/st_john039s_college_199324.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+      .container {
+        /* width: 100px; */
+        padding: 20px;
+        background-color: #ffffffb3;
+        box-shadow: 0 40px 60px rgba(1, 1, 1, 1);
+        border-radius: 10px;
+        text-align: center;
+      }
+      span{
+        text-decoration: blue;
+      }
+      #warning{
+        text-align: left;
+        padding: 5px ;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style=""> 
+    <div class="container">
+      <span id="device">
+    <div class="row">
+      <div class="input-field col s4">
+        <input id="rank" type="number" class="validate" >
+        <label for="rank" style="color: black; font-family: 'American Typewriter';">Rank</label>
+      </div>
+    <div class="input-field col s4">
+      <input id="email" type="email" class="validate">
+      <label for="email" style="color: black; font-family: 'American Typewriter';" >E-Mail</label>
+    </div>
+    <div class="input-field col s4">
+      <input type="text" id="branch" class="autocomplete">
+      <label for="branch" style="color: black; font-family: 'American Typewriter';">Branch</label>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="input-field col s12 ">
+      <textarea id="address" class="materialize-textarea " data-length="500"></textarea>
+      <label for="address"  style="color: black; font-family: 'American Typewriter';">Address</label>
+    </div> </div>
+      </span>
+      <p id='warning' style="text-decoration:red"></p>
+      <table id="fullTable" class="striped">
+        <thead >
+          <tr id="tableHead">
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+   
+  <button class="waves-effect waves-light btn blue" id="submit">Submit</button> 
+</div> 
+ </div>
+</div>
+</body>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function() {
+      M.updateTextFields();
+    });
+
+    branchData = ["AD-Artificial Intelligence & Data Science", "AE-Aeronautical Engineering", "AI-Artificial Intelligence & Machine Learning", "AU- Automobile Engineering", "BT- Biotechnology", "CA-Computer Science & Engineering (Artificial Intelligence)", "CB-Computer Science & Business Systems", "CG-Computer Science & Design", "CI-Computer Science & Engineering (Artificial Intelligence & Machine Learning)", "CS-Computer Science & Engineering", "CV-Civil Engineering", "CY-Computer Science & Engineering (Cyber Security)", "EC-Electronics & Communication Engineering", "EE-Electrical & Electronics Engineering", "IS-Information Science & Engineering", "ME-Mechanical Engineering"];
+
+    $(document).ready(function(){
+    $('input.autocomplete').autocomplete({
+      data: {
+        "AD-Artificial Intelligence & Data Science" :null, 
+        "AE-Aeronautical Engineering" :null, 
+        "AI-Artificial Intelligence & Machine Learning" :null, 
+        "AU- Automobile Engineering" :null, 
+        "BT- Biotechnology" :null, 
+        "CA-Computer Science & Engineering (Artificial Intelligence)" :null, 
+        "CB-Computer Science & Business Systems" :null, 
+        "CG-Computer Science & Design" :null, 
+        "CI-Computer Science & Engineering (Artificial Intelligence & Machine Learning)" :null, 
+        "CS-Computer Science & Engineering" :null, 
+        "CV-Civil Engineering" :null, 
+        "CY-Computer Science & Engineering (Cyber Security)" :null, 
+        "EC-Electronics & Communication Engineering" :null, 
+        "EE-Electrical & Electronics Engineering" :null, 
+        "IS-Information Science & Engineering" :null, 
+        "ME-Mechanical Engineering" :null,
+      },
+    });
+  });
+  </script>  
+<script>
+
+
+var mobileViewHtml = `<div class="row">
+        <div class="input-field col s12">
+          <input id="rank" type="number" class="validate" >
+          <label for="rank" style="color: black; font-family: 'American Typewriter';  font-size: larger;">Rank</label>
+        </div>
+      </div>
+        <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate">
+        <label for="email" style="color: black; font-family: 'American Typewriter';  font-size: larger;" >E-Mail</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="text" id="branch" class="autocomplete">
+        <label for="branch" style="color: black; font-family: 'American Typewriter';  font-size: larger;">Branch</label>
+      </div> 
+    </div>
+    <div class="row">
+      <div class="input-field col s12 ">
+        <textarea id="address" class="materialize-textarea " data-length="500"></textarea>
+        <label for="address"  style="color: black; font-family: 'American Typewriter';  font-size: larger;">Address</label>
+      </div>  
+    </div>`;
+
+  function start(){
+    let details = navigator.userAgent;
+    let regexp = /android|iphone|kindle|ipad/i;
+    let isMobileDevice = regexp.test(details);
+
+  if (!isMobileDevice) {
+    console.log('You are using destop');
+
+  } else {
+  document.getElementById('device').innerHTML = mobileViewHtml;
+  document.getElementbyTagName('body').style = 'background: linear-gradient(312deg, rgba(0,0,0,1) 0%, rgba(0,161,255,1) 100%); ';
+  console.log('mobile'); 
+  }
+  }
+  start();
+</script>
+  <script>
+    function pressed(){
+      var txt = document.getElementById("input").value;
+      var arr;
+    arr = google.script.run.withSuccessHandler(receiveDataFromServer).myFunction(txt);
+}
+
+function receiveDataFromServer(data){
+  console.log(data);
+  alert(data);
+}
+var rank = document.getElementById("rank");
+var email = document.getElementById("email");
+var branch = document.getElementById("branch");
+var address = document.getElementById("address");
+var submit = document.getElementById("submit");
+var tableBody = document.getElementById("tableBody");
+var tableHead = document.getElementById("tableHead");
+var p = document.getElementById('warning');
+
+rank.addEventListener("keypress",function(e){
+  if(e.key == "Enter"){
+    email.focus();
+  }
+});
+email.addEventListener("keypress",function(e){
+  if(e.key == "Enter"){
+    branch.focus();
+  }
+});
+branch.addEventListener("keypress",function(e){
+  if(e.key == "Enter"){
+    address.focus();
+  }
+});
+submit.addEventListener("click",function(e){
+
+
+  if(email.value == '' || rank.value == '' || address.value == '' || branchData.indexOf(branch.value) == -1){
+  submit.innerText = "ERROR!";
+  p.innerText = "Please enter values in all the above fields.\nAlso make sure you have selected branch from autocomplete dropdown"
+  submit.className = submit.className.replace("blue","red");
+  setTimeout(function(){
+  submit.innerText = "Submit";
+  submit.className = submit.className.replace("red","blue");},3000);
+    // alert("Please fill all the details!")
+  }
+  else{
+    submit.innerText = "Processing...";
+  submit.className = submit.className.replace("blue","red");
+  obj = {rank:rank.value,email:email.value,branch:branch.value,address:address.value};
+  google.script.run.withSuccessHandler(output).lastPage(obj);
+
+  }
+});
+function constructTable(data){
+  var th = ` <th>Code</th>
+              <th>College Name</th>
+              <th>Cutoff Rank</th>
+              <th>Duration</th>
+              <th>Distance</th>`;
+  tableHead.innerHTML = th;
+  var tableRowHtml = '';
+    for(var a = 0; a<data.length; a++){
+      tableRowHtml +=
+   `        <tr>   
+            <td>${data[a][0]}</td>
+            <td>${data[a][1]}</td>
+            <td>${data[a][2]}</td>
+            <td>${data[a][3]}</td>
+            <td>${data[a][4]}</td>
+            </tr>
+    `
+    }
+    tableBody.innerHTML = tableRowHtml;
+    google.script.run.sendMailTo(`<!DOCTYPE html>
+<html lang="en">
+<body>
+${document.getElementById("fullTable").outerHTML}`,email.value,data,branch.value);
+}
+
+function output(clgData){
+  try{
+  if(clgData[0][0].length!=1){
+    var totalClgData = [];
+    document.getElementById("warning").innerText = "";
+    for(var a = 0; a<clgData.length; a++){
+      var code = clgData[a][0];
+      var clgName = clgData[a][1];
+      var cutoff = clgData[a][2];
+      var duration = clgData[a][3];
+      var distance = clgData[a][4];
+      var currentClgData = [code,clgName,cutoff,duration,distance];
+      console.log(currentClgData);
+      // document.getElementById("warning").innerText += currentClgData + "\n";  
+      totalClgData.push(currentClgData);
+    }
+    constructTable(totalClgData);
+    submit.innerText = "Submit";
+    submit.className = submit.className.replace("red","blue")
+    
+    return 0;
+  }}
+  catch(error){
+    console.log(error);
+  }
+  moreThanRank(clgData[0],clgData[1]);
+}
+
+function moreThanRank(lastRank, branch){
+  tableBody.innerHTML = '';
+  tableHead.innerHTML = '';
+  document.getElementById("warning").innerText = "Minimum rank required for "+ branch+ " is " + lastRank;
+  submit.innerText = "Submit";
+  submit.className = submit.className.replace("red","blue");
+}
+  </script>
+</html>
