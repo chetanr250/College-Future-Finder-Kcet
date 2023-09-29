@@ -76,7 +76,7 @@ function main(){
 }
 
 function askAI(prompt){
-    var apiur1 = "https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key=AIzaSyA9M0nBcBrOiZYqhMuScxx55J9vF3Rm5bg";
+    var apiur1 = ""; //API Key
     var headers = {
     "Content-Type": "application/json"};
     var requestBody = {
