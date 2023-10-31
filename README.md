@@ -61,3 +61,9 @@ Future Finder leverages the Palm API to generate comprehensive and detailed info
 5. **Data-Driven Insights:**
    - Utilizes KCET and COMEDK ranks as key data points to offer accurate and relevant recommendations.
 
+## Screenshots
+
+![Screenshot 1](fronted.png)
+![Screenshot 2](result.png)
+![Screenshot 3](mail1.png)
+![Screenshot 4](mail2.png)
